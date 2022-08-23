@@ -1,0 +1,14 @@
+<app-stock-selector (searchStockEmitter)="getItem($event)"></app-stock-selector>
+
+<div class="container itemsContainer">
+  <div *ngIf="(loadingData$ | async) || (loadingPrices$ | async); else showItems" class="loader">
+    Updating data ... Please wait a short moment.
+  </div>
+  <ng-template #showItems>
+    <app-stock-card *ngFor="let item of (items$ | async) |  keyvalue" [item]="item.value"
+                    (deleteEmitter)="deleteItem($event)"
+                    class="card"
+    ></app-stock-card>
+  </ng-template>
+</div>
+

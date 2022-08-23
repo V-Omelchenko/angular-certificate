@@ -1,0 +1,14 @@
+<div class="container stock-selector">
+  <h1>Stock tracker</h1>
+  <p>Enter the symbol of a stock to track <span>(i.e. AAPL, TSLA, GOOGL)</span></p>
+
+  <div class="inputContainer">
+    <mat-form-field  appearance="fill">
+      <input matInput #input required minlength="1" maxlength="5">
+    </mat-form-field>
+
+    <button
+      [disabled]="!input.validity.valid"
+      mat-flat-button color="primary" (click)="searchStock(input.value); input.value = ''">Track it!</button>
+  </div>
+</div>

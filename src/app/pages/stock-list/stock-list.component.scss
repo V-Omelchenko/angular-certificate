@@ -1,0 +1,21 @@
+.loader {
+  text-align: center;
+  background: #fff;
+  margin: 64px auto 0;
+  border-radius: 4px;
+  padding: 8px;
+  width: 320px;
+}
+.itemsContainer {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.card {
+  max-width: calc(100%/3 - 64px/3);
+}
+@media (max-width: 767px) {
+.card {
+  max-width: 100%;
+}
+}

@@ -1,0 +1,46 @@
+<mat-card>
+  <div *ngIf="item.data" class="item">
+    <div class="headerCont">
+      <span class="symbol">{{item.data.displaySymbol}}</span>
+      <i *ngIf="item.prices.dp >= 0; else showArrowDwn" class="icon-up">⬆</i>
+      <p class="title">{{item.data.description}}</p>
+    </div>
+
+    <button (click)="delete(item.data.symbol)" mat-icon-button class="deleteButton">
+      &#10006;
+    </button>
+
+    <div class="labelsCont">
+        <div class="label">
+          <b>Change today:</b>
+          {{item.prices.dp >= 0 ? '+' : ''}}{{item.prices.dp | number: '1.2-2'}}%
+        </div>
+
+        <div class="label">
+          <b>Current price:</b>
+          ${{item.prices.c}}
+        </div>
+
+        <div class="label">
+          <b>Opening price:</b>
+          ${{item.prices.o}}
+        </div>
+
+        <div class="label">
+          <b>High price:</b>
+          ${{item.prices.h}}
+        </div>
+    </div>
+
+    <div class="linkCont">
+      <a mat-stroked-button  routerLink="/sentiment/{{item.data.symbol}}">See sentiment details</a>
+    </div>
+
+  </div>
+</mat-card>
+
+
+
+<ng-template #showArrowDwn>
+  <i  class="icon-down">⬇</i>
+</ng-template>

@@ -1,0 +1,39 @@
+<div class="detailPageContainer">
+
+  <mat-card class="card">
+    <span class="symbol">{{symbol}}</span>
+    <div *ngIf="(loadingSentiment$ | async) === false && (loadingItem$ | async) === false; else loader">
+      <h3>{{(stockItem$ | async)?.description}}</h3>
+      <div class="columns">
+        <div *ngFor="let sen of sentiment$ | async" class="column">
+          <div class="month">{{sen.year + '-' + sen.month + '-01' | date: 'MMMM'}} {{sen.year}}</div>
+          <ng-container *ngIf="sen?.mspr; else noData">
+            <i *ngIf="sen.mspr >= 0; else showArrowDwn" class="icon-up">⬆</i>
+            <div class="change"><b>Change: </b>{{sen.change}}</div>
+            <div class="mspr"><b>MSPR: </b>{{sen.mspr}}</div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <button mat-stroked-button routerLink="/" class="back-button">
+    &#8592; Back to list of stocks</button>
+
+</div>
+
+<ng-template #loader>
+  <div class="loader">
+    Collecting data ... Please wait a short moment
+  </div>
+</ng-template>
+
+<ng-template #noData>
+  <div class="noData">
+    No data available
+  </div>
+</ng-template>
+
+<ng-template #showArrowDwn>
+  <i  class="icon-down">⬇</i>
+</ng-template>
