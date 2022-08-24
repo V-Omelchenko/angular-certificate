@@ -27,5 +27,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
-    - run: ng build --configuration=production --base-href "https://v-omelchenko.github.io/angular-certificate"
+    - run: npm run build --configuration=production --base-href "https://v-omelchenko.github.io/angular-certificate"
     - run: npx angular-cli-ghpages --dir=dist/angular-certificate
