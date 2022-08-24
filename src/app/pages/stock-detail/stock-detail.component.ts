@@ -53,7 +53,6 @@ export class StockDetailComponent implements OnInit {
     const nowMonthIndex = data.findIndex(d => d.month === currentMonth);
     const currentMonthData = nowMonthIndex !== -1 ? data[nowMonthIndex] : {month: currentMonth, year:date.getFullYear()}
     result.push(currentMonthData);
-    console.log(result)
     return result;
   }
 

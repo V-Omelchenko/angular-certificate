@@ -23,7 +23,7 @@ export class StockService {
           reject(error)
         }
         data.result.forEach(i => {
-          // Selecting item that equal to types symbol
+          /** Selecting item that equal to types symbol */
           if(i.symbol === symbol) {
             resolve(i)
           }
